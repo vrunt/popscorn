@@ -2,6 +2,7 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import Counter from "../islands/Counter.tsx";
+import Movielist from "../islands/Movielist.tsx";
 import { config } from "https://deno.land/x/dotenv/mod.ts";
 
 const { APPLICATION_NAME } = config()
@@ -13,6 +14,7 @@ export default function Home() {
       <p class={tw`my-6`}>
         Welcome to {APPLICATION_NAME}.
       </p>
+      <Movielist />
       <Counter start={3} />
     </div>
   );
