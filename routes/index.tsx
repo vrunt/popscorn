@@ -2,9 +2,9 @@
 import { h, JSX } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts"
-import { config } from "https://deno.land/std@0.154.0/dotenv/mod.ts";
+import "https://deno.land/std@0.154.0/dotenv/load.ts";
 
-const { APPLICATION_NAME, TMDB_API_KEY } = await config();
+const TMDB_API_KEY = Deno.env.get("TMDB_API_KEY");
 const BASE_URI = "https://api.themoviedb.org/3";
 
 interface Movie {
@@ -54,7 +54,7 @@ export default function Home({ data } : PageProps<MovieList | null>) {
     <div class={tw`place-content-center scale-75 -skew-y-3 -skew-x-12 bg-black`}>
       <h1 class = {tw`text-center scale-125 text-9xl skew-x-12 skew-y-3`}>🍿🍿🍿🍿🍿</h1>
       </div>
-    <p class = {tw`my-6`}>Welcome to { APPLICATION_NAME }.</p>
+    <p class = {tw`my-6`}>Welcome to { Deno.env.get("APPLICATION_NAME") }.</p>
     <ul class={tw`list-disc`}>
       {data && data.map( (record: Movie) =>
         <li key={record.id}>

@@ -1,12 +1,10 @@
 /** @jsx h */
 import { h, JSX } from "preact";
 import { tw } from "@twind";
-import { useEffect, useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts"
-import * as dotenv from "https://deno.land/std@0.154.0/dotenv/mod.ts";
-import { JS_PREFIX } from "https://deno.land/x/fresh@1.0.2/src/server/constants.ts";
+import "https://deno.land/std@0.154.0/dotenv/load.ts";
 
-const { TMDB_API_KEY } = await dotenv.config()
+const TMDB_API_KEY = Deno.env.get("TMDB_API_KEY");
 const BASE_URI = "https://api.themoviedb.org/3";
 
 interface Movie {
