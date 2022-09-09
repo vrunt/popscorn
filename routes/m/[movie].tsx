@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h, JSX } from "preact";
-import { tw } from "@twind";
+import { JSX } from "preact";
 import { Handlers, PageProps } from "$fresh/server.ts"
 import "https://deno.land/std@0.154.0/dotenv/load.ts";
 
@@ -41,18 +39,18 @@ function getRating(avg: number) {
       rating += "¾";
       break;
   }
-  return <span class={tw`grayscale`} title={roundedAvg.toString()}>{rating}</span>;
+  return <span class="grayscale" title={roundedAvg.toString()}>{rating}</span>;
 }
 
 export default function Home({ data } : PageProps<Movie | null>) {
 
   return ( 
-  <div class = {tw`p-4 mx-auto max-w-screen-md`}>
-    <div class={tw`place-content-center scale-75 -skew-y-3 -skew-x-12 bg-black`}>
-      <a href = "/"><h1 class = {tw`text-center text-blue-500 scale-125 text-9xl skew-x-12 skew-y-3`}>{getRating(data?.vote_average || 0)}</h1></a>
+  <div class = "p-4 mx-auto max-w-screen-md">
+    <div class="place-content-center scale-75 -skew-y-3 -skew-x-12 bg-black">
+      <a href = "/"><h1 class = "text-center text-blue-500 scale-125 text-9xl skew-x-12 skew-y-3">{getRating(data?.vote_average || 0)}</h1></a>
       </div>
-    <p class = {tw`my-6`}>Welcome to Popscorn.</p>
-    <h2 class={tw`text-5xl`}>{data?.title} ({data?.release_date.substring(0,4)})</h2>
+    <p class = "my-6">Welcome to Popscorn.</p>
+    <h2 class="text-5xl">{data?.title} ({data?.release_date.substring(0,4)})</h2>
     <p>{data?.overview}</p>
   </div>
   );

@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h, JSX } from "preact";
-import { tw } from "@twind";
+import { JSX } from "preact";
 import { Handlers, PageProps } from "$fresh/server.ts"
 import "https://deno.land/std@0.154.0/dotenv/load.ts";
 
@@ -44,21 +42,21 @@ function getRating(avg: number) {
       rating += "¾";
       break;
   }
-  return <span class={tw`grayscale`} title={roundedAvg.toString()}>{rating}</span>;
+  return <span class="grayscale" title={roundedAvg.toString()}>{rating}</span>;
 }
 
 export default function Home({ data } : PageProps<MovieList | null>) {
 
   return ( 
-  <div class = {tw`p-4 mx-auto max-w-screen-md`}>
-    <div class={tw`place-content-center scale-75 -skew-y-3 -skew-x-12 bg-black`}>
-      <h1 class = {tw`text-center scale-125 text-9xl skew-x-12 skew-y-3`}>🍿🍿🍿🍿🍿</h1>
+  <div class = "p-4 mx-auto max-w-screen-md">
+    <div class="place-content-center scale-75 -skew-y-3 -skew-x-12 bg-black">
+      <h1 class = "text-center scale-125 text-9xl skew-x-12 skew-y-3">🍿🍿🍿🍿🍿</h1>
       </div>
-    <p class = {tw`my-6`}>Welcome to { Deno.env.get("APPLICATION_NAME") }.</p>
-    <ul class={tw`list-disc`}>
+    <p class = "my-6">Welcome to { Deno.env.get("APPLICATION_NAME") }.</p>
+    <ul class="list-disc">
       {data && data.map( (record: Movie) =>
         <li key={record.id}>
-          <a href={"./m/"+record.id}><span class={tw`bold`}>{record.title}</span></a> ({record.release_date.substring(0,4)}) 
+          <a href={"./m/"+record.id}><span class="bold">{record.title}</span></a> ({record.release_date.substring(0,4)}) 
           { getRating(record.vote_average) }
         </li> )}
     </ul>

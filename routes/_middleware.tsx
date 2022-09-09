@@ -1,4 +1,3 @@
-/** @jsx h */
 import { MiddlewareHandlerContext } from "$fresh/server.ts"
 
 interface State {
