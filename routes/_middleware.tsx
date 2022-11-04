@@ -1,15 +1,12 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts"
 
-interface State {
-    data: string;
-}
-
-export async function handler(
+export function handler(
     req: Request,
-    ctx: MiddlewareHandlerContext<State>,
-) {
-    ctx.state.data = "myData";
-    const resp = await ctx.next();
-    resp.headers.set("server", "fresh server");
-    return resp;
+    ctx: MiddlewareHandlerContext<null>
+    ) {
+        const userId = null;
+    if (userId) {
+        ctx.state.userId = Number(userId.split(".")[0]);
+    }
+    return ctx.next();
 }

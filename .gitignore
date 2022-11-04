@@ -1,2 +1,3 @@
 #ignore ENV file
 .env
+fresh.gen.ts
